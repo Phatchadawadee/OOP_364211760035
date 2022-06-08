@@ -37,3 +37,4 @@ t = Triangle(10,20)
 # solution 3
 for obj in (r,t):
     obj.cal_area()
+
