@@ -1,4 +1,3 @@
-
 class Student():
     def __init__(self, name, id, age, weigth, height):
         # object attributes
@@ -40,11 +39,11 @@ class Student():
         self.__heigth = heigth
 
     def student_detail(self):
-        print(f'STD Name: {self.__name}\n'
-                  f'ID: {self.__id}\n'
-                  f'Age: {self.__age}\n'
-                  f'Weight: {self.__weigth}\n'
-                  f'Height: {self.__heigth}\n')
+        print(f'\tSTD Name: {self.__name}\n'
+                  f'\tID: {self.__id}\n'
+                  f'\tAge: {self.__age}\n'
+                  f'\tWeight: {self.__weigth}\n'
+                  f'\tHeight: {self.__heigth}\n')
 
 class Vaccine():
     def __init__(self,vac_name):
@@ -77,55 +76,56 @@ class Vaccinated():
             print(f'\tvaccine {i+1}: {self.vaccinated[i].get_vaccine()} date: {self.date[i]}')
 
 
-# object
-std1 = Student('Puriwat Lertkrai','001',35,80.00,180)
-#std1.student_detail()
 
-vac1 = Vaccine('Pizer')
-#vac1.vaccine_detail()
-vac2 = Vaccine('Moderna')
-#vac2.vaccine_detail()
-
-date1 = '10/7/2564'
-date2 = '5/1/2565'
-
-std_vac = Vaccinated(std1)
-# add data to object
-std_vac.add_vaccinated(vac1)
-std_vac.add_date(date1)
-
-std_vac.add_vaccinated(vac2)
-std_vac.add_date(date2)
-
-# display student vaccinated
-std_vac.vaccinated_detail()
+# # object
+# std1 = Student('Puriwat Lertkrai','001',35,80.00,180)
+# #std1.student_detail()
+#
+# vac1 = Vaccine('Pizer')
+# #vac1.vaccine_detail()
+# vac2 = Vaccine('Moderna')
+# #vac2.vaccine_detail()
+#
+# date1 = '10/7/2564'
+# date2 = '5/1/2565'
+#
+# std_vac = Vaccinated(std1)
+# # add data to object
+# std_vac.add_vaccinated(vac1)
+# std_vac.add_date(date1)
+#
+# std_vac.add_vaccinated(vac2)
+# std_vac.add_date(date2)
+#
+# # display student vaccinated
+# std_vac.vaccinated_detail()
 
 # build your interface for input data  -- here
 # n = input('Student name: ')
 # id = input('ID: ')
-
+#
 # std2 = Student(n,id,35,80.00,180)
 
 """
-input name,id,age,weight,height
-input How many vaccinated
+input name,id,age,weight,height ?
+input How many vaccinated ? 
 select vaccines
 input date(str)
 """
 
 name = input('Student Name: ')
-id = input('student ID: ')
+id = input('Student ID: ')
 age = int(input('Age: '))
-weight = float(input('Weight (kg): '))
-height = float(input('Height (cm): '))
+weigth = float(input('Weigth (kg): '))
+heigth = float(input('Heigth (cm): '))
 
 num = int(input('How many your vaccinated ? : '))
 vacc = list()
 date = list()
 select = 1
 for x in range(num):
-    print('which vaccine: ')
-    print('\t1.sinovac')
+    print(f'which vaccine {x+1}:')
+    print("\t1.sinovac")
     print('\t2.astrazeneca')
     print('\t3.johnson&johnson')
     print('\t4.moderna')
@@ -135,7 +135,7 @@ for x in range(num):
         select = int(input('select(1-6): '))
         if select >=1 and select <=6:
             break
-    print('Please, enter number 1-6 only. ')
+        print('Please, enter number 1-6 only.')
 
     if select == 1:
         vacc.append('sinovac')
@@ -156,8 +156,8 @@ for x in range(num):
     date.append(d)
 
 # add data to object
-std = Student(name,id,age,weight,height)
-v = [] # list of  vaccine object
+std = Student(name,id,age,weigth,heigth)
+v = [] # list of vaccine object
 for x in vacc:
     v.append(Vaccine(x))
 
@@ -166,6 +166,8 @@ for x in v:
     std_vac.add_vaccinated(x)
 for x in date:
     std_vac.add_date(x)
+
+std_vac.vaccinated_detail()
 
 
 
