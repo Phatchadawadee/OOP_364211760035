@@ -1,3 +1,4 @@
+
 class Student():
     def __init__(self, name, id, age, weigth, height):
         # object attributes
@@ -71,16 +72,9 @@ class Vaccinated():
     def vaccinated_detail(self):
         print('Student Vaccinated Informations:')
         self.student.student_detail()
-        # count = 1
-        # for v,d in self.vaccinated,self.date:
-        #     # print(f'\tvaccine {count}: {v.get_vaccine()} date: {d}')
-        #     # count+=1
-        #     print(v.get_vaccine())
-        #     print(d)
 
         for i in range(len(self.vaccinated)):
             print(f'\tvaccine {i+1}: {self.vaccinated[i].get_vaccine()} date: {self.date[i]}')
-
 
 
 # object
@@ -107,7 +101,73 @@ std_vac.add_date(date2)
 std_vac.vaccinated_detail()
 
 # build your interface for input data  -- here
-n = input('Student name: ')
-id = input('ID: ')
+# n = input('Student name: ')
+# id = input('ID: ')
 
-std2 = Student(n,id,35,80.00,180)
+# std2 = Student(n,id,35,80.00,180)
+
+"""
+input name,id,age,weight,height
+input How many vaccinated
+select vaccines
+input date(str)
+"""
+
+name = input('Student Name: ')
+id = input('student ID: ')
+age = int(input('Age: '))
+weight = float(input('Weight (kg): '))
+height = float(input('Height (cm): '))
+
+num = int(input('How many your vaccinated ? : '))
+vacc = list()
+date = list()
+select = 1
+for x in range(num):
+    print('which vaccine: ')
+    print('\t1.sinovac')
+    print('\t2.astrazeneca')
+    print('\t3.johnson&johnson')
+    print('\t4.moderna')
+    print('\t5.sinopharm')
+    print('\t6.pfizer')
+    while True:
+        select = int(input('select(1-6): '))
+        if select >=1 and select <=6:
+            break
+    print('Please, enter number 1-6 only. ')
+
+    if select == 1:
+        vacc.append('sinovac')
+    elif select == 2:
+        vacc.append('astrazeneca')
+    elif select == 3:
+        vacc.append('johnson&johnson')
+    elif select == 4:
+        vacc.append('moderna')
+    elif select == 5:
+        vacc.append('sinopharm')
+    elif select == 6:
+        vacc.append('pfizer')
+    else:
+        print('Please, enter number 1-6 only.')
+
+    d = input('Date: ')
+    date.append(d)
+
+# add data to object
+std = Student(name,id,age,weight,height)
+v = [] # list of  vaccine object
+for x in vacc:
+    v.append(Vaccine(x))
+
+std_vac = Vaccinated(std)
+for x in v:
+    std_vac.add_vaccinated(x)
+for x in date:
+    std_vac.add_date(x)
+
+
+
+# print([x for x in vacc])
+# print([x for x in date])
